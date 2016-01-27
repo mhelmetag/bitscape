@@ -4,5 +4,6 @@ import bitscape.views
 
 urlpatterns = patterns('',
     url(r'^$', bitscape.views.index, name='index'),
-    url(r'')
+    url(r'^avatar/(?P<width>[0-9]{2,3})x(?P<height>[0-9]{2,3}/$',
+        avatar, name='avatar')
 )

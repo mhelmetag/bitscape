@@ -5,6 +5,12 @@ from django.core.urlresolver import reverse
 from django.core.cache cache
 from django import forms
 
-# Create your views here.
 def index(request):
     example = reverse('bitscape', kwargs={'width': 200, 'height': 200})
+    context = {
+        'example': request.build_absolute_url
+    }
+    return render(request, 'index.html', context)
+
+# Generate and return avatar
+def avatar(request, width, height):
