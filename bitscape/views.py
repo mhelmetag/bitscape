@@ -6,6 +6,8 @@ from django.core.cache import cache
 from django import forms
 import json
 
+from lib.mirror import Mirror
+
 def index(request):
     # example = reverse('mirror', kwargs={'width': 200, 'height': 200})
     # context = {
