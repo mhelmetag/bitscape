@@ -2,8 +2,8 @@ from django.conf.urls import patterns, include, url
 
 import bitscape.views
 
-urlpatterns = patterns('',
+urlpatterns = (
     url(r'^$', bitscape.views.index, name='index'),
-    url(r'^mirror/(?P<width>[0-9]{2,3})x(?P<height>[0-9]{2,3})$',
-        bitscape.views.mirror, name='mirror')
+    url(r'^bitscape/(?P<image_type>[a-z]{1,10})x(?P<image_size>[0-9]{2,3})$',
+        bitscape.views.bitscape, name='bitscape')
 )
