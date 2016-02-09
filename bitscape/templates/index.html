@@ -15,15 +15,14 @@
       This server can serve generated avatars!</p>
       <p>To request an avatar of a given width and height
       simply follow this url example...
-      <pre>&lt;img src=""/&gt;</pre>
+      <pre>&lt;img src="{{ example }}"/&gt;</pre>
     </section>
     <section>
       <h2>Examples</h2>
       <ul>
-        <li><img src=""/></li>
-        <li><img src=""/></li>
-        <li><img src=""/></li>
-        <li><img src=""/></li>
+        <li><img src="{% url 'bitscape' image_type='mirror' image_size='200' %}"/></li>
+        <li><img src="{% url 'bitscape' image_type='mirror' image_size='200' %}"/></li>
+        <li><img src="{% url 'bitscape' image_type='mirror' image_size='200' %}"/></li>
       </ul>
     </section>
   </body>
