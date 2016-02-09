@@ -10,20 +10,20 @@ class Mirror:
         self.final_image_size = (size, size)
 
         # colors
-        self.background_color = (200, 200, 200) # grey
-        self.pattern_color = rgb_color_sample() # random color
+        self.background_color = (200, 200, 200)
+        self.pattern_color = self.rgb_color_sample()
 
     # generate base and crop squares from random grid and recolors and repastes them
     def generate_image(self):
         base_image_size = (200, 200)
 
-        grid_arr = create_grid()
-        grid_samples = choose_random_grid(grid_arr)
+        grid_arr = self.create_grid()
+        grid_samples = self.choose_random_grid(grid_arr)
         image = Image.new('RGB', base_image_size, self.background_color)
 
-        draw_blocks(image, grid_samples)
-        mirror_image(image)
-        image = resize_image(image)
+        self.draw_blocks(image, grid_samples)
+        self.mirror_image(image)
+        image = self.resize_image(image)
 
         return image
 
@@ -50,7 +50,7 @@ class Mirror:
         return grid_samples
 
     # draw blocks with from sampled grid arr
-    def draw_blocks(self, image, grid):
+    def draw_blocks(self, image, grid_samples):
         for sample in grid_samples:
             image.paste(self.pattern_color, sample)
 
@@ -64,16 +64,20 @@ class Mirror:
         image.paste(left_copy, right_box)
 
     # sample a random-ish rgb color that fits the pastel theme
-    def rgb_color_sample():
+    def rgb_color_sample(self):
         r = random.randint(120, 240)
         g = random.randint(120, 240)
         b = random.randint(120, 240)
 
         return (r, g, b)
 
-    def resize_image(image):
-        if !(image.size == self.final_image_size):
+    def resize_image(self, image):
+        if image.size == self.final_image_size:
+            return image
+        else:
             new_image = image.resize(self.final_image_size)
             return new_image
-        else:
-            return image
+
+    def test(self):
+        image = self.generate_image()
+        image.save('test.png')
