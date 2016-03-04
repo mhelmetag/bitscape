@@ -1,13 +1,12 @@
 from io import BytesIO
-import json
 
 from bitscape.lib.mirror import Mirror
 
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseBadRequest
-from django.views.decorators.http import etag
+# from django.views.decorators.http import etag
 from django.core.urlresolvers import reverse
-from django.core.cache import cache
+# from django.core.cache import cache
 from django import forms
 
 # def generate_etag(request, width, height):
@@ -15,6 +14,8 @@ from django import forms
 #     return hashlib.sha1(content.encode('utf-8')).hexdigest()
 
 # @etag(generate_etag)
+
+
 def bitscape(request, image_type, image_size):
     form = ImageForm({'image_type': image_type, 'image_size': image_size})
     if form.is_valid():
@@ -23,12 +24,16 @@ def bitscape(request, image_type, image_size):
     else:
         return HttpResponseBadRequest('Invalid Image Request')
 
+
 def index(request):
-    example = reverse('bitscape', kwargs={'image_type': 'mirror', 'image_size': 200})
+    example = reverse(
+        'bitscape', kwargs={'image_type': 'mirror', 'image_size': 200}
+    )
     context = {
         'example': request.build_absolute_uri(example)
     }
     return render(request, 'index.html', context)
+
 
 class ImageForm(forms.Form):
     """Form to validate requested placeholder image"""
@@ -43,7 +48,7 @@ class ImageForm(forms.Form):
     def serve_image(self):
         """Generate an image of the requested type and return as raw bytes"""
         image_format = 'PNG'
-        image_type = self.cleaned_data['image_type']
+        # image_type = self.cleaned_data['image_type']
         image_size = self.cleaned_data['image_size']
 
         # TODO: caching

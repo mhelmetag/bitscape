@@ -1,7 +1,9 @@
 import os
 
 DEBUG = os.environ.get('DEBUG', 'on') == 'on'
-SECRET_KEY = os.environ.get('SECRET_KEY', 'd6i=7q$m)m$f(@kdj*kq#81morohw21pn%&8@6*wt3kdt3m!2^')
+SECRET_KEY = os.environ.get(
+    'SECRET_KEY', 'd6i=7q$m)m$f(@kdj*kq#81morohw21pn%&8@6*wt3kdt3m!2^'
+)
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost').split(',')
 TEMPLATE_DEBUG = os.environ.get('TEMPLATE_DEBUG', 'on') == 'on'
 

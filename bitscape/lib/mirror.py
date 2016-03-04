@@ -1,6 +1,7 @@
 import random
 from PIL import Image
 
+
 class Mirror:
     '''Mirror BitArt Generator'''
     def __init__(self, size):
@@ -13,7 +14,8 @@ class Mirror:
         self.background_color = (200, 200, 200)
         self.pattern_color = self.rgb_color_sample()
 
-    # generate base and crop squares from random grid and recolors and repastes them
+    # generate base and crop squares from random grid
+    # recolors and repastes them
     def generate_image(self):
         base_image_size = (200, 200)
 
@@ -27,13 +29,13 @@ class Mirror:
 
         return image
 
-
-    # generate an array of grid tuples like [(x1, y1, x2, y2), (x3, y3, x4, y4), ...]
+    # generate an array of grid tuples like
+    # [(x1, y1, x2, y2), (x3, y3, x4, y4), ...]
     def create_grid(self):
         grid_arr = []
 
         for x in range(1, 5):
-            for y in range(1 ,9):
+            for y in range(1, 9):
                 bx1 = x * 20
                 by1 = y * 20
                 bx2 = bx1 + 20
