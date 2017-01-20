@@ -2,3 +2,4 @@ Django
 gunicorn
 Pillow
 whitenoise
+flake8

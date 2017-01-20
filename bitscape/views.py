@@ -37,7 +37,7 @@ def index(request):
 
 class ImageForm(forms.Form):
     """Form to validate requested placeholder image"""
-    # TODO: use choise field instead for security
+    # TODO: use choice field instead for security
     # IMAGE_TYPE_CHOICES = (
     #     ('mirror', 'mirror')
     # )
